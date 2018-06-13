@@ -1,6 +1,7 @@
 //canvas constants
 const boxSideLength = 83;
-const sceneWidth = 505
+const sceneWidth = 505;
+const sceneHeight = 606;
 
 // Enemies our player must avoid
 class Enemy{
@@ -30,8 +31,6 @@ class Enemy{
     	if(this.x>=sceneWidth){
     		this.x =0;
     	}
-    	console.log(dt);
-
 	}
 
 	// Draw the enemy on the screen, required method for game	
@@ -53,15 +52,20 @@ class Player{
     	// The image/sprite for our enemies, this uses
     	// a helper we've provided to easily load images
 		this.sprite	= 'images/char-boy.png';
-		this.x = 50;
-		this.y = 50;
+		this.y = sceneWidth-40-83;
+		this.x = 202;
 
-		
 	}
 
 
+	reset(){
+		this.sprite	= 'images/char-boy.png';
+		this.y = sceneWidth-40-83;
+		this.x = 202;
+	}
+
 	// Update the enemy's position, required method for game
-	// Parameter: dt, a time delta between ticks
+	// Parameter: dt, a time delta between tickt
 	update(dt){
 		// You should multiply any movement by the dt parameter
     	// which will ensure the game runs at the same speed for
@@ -75,6 +79,32 @@ class Player{
 	}
 
 	handleInput(keyCode){
+		switch (keyCode) {
+			case 'left':
+					if (this.x==0) {return;}
+					else{this.x-=101;}	
+					
+				break;
+			case 'right':
+					if(this.x==404){return;}
+					else{this.x+=101;}
+				break;
+
+			case 'up':
+					if(this.y==50){this.reset()}
+					else{this.y-=83;}
+				console.log(this.y);
+
+				break;	
+			case 'down':
+					if(this.y==sceneWidth-50-83){return;}
+					else{this.y+=83;}
+				break;	
+
+			default:
+				// statements_def
+				break;
+		}
 
 
 	}
