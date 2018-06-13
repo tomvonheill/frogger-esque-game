@@ -64,12 +64,8 @@ class Player{
 		this.x = 202;
 	}
 
-	// Update the enemy's position, required method for game
-	// Parameter: dt, a time delta between tickt
 	update(){
-		// You should multiply any movement by the dt parameter
-    	// which will ensure the game runs at the same speed for
-    	// all computers.
+		//updates status of player for win
     	if(this.y ==0){
     		window.alert("You Won!");
 			this.reset();
@@ -84,6 +80,7 @@ class Player{
 	}
 
 	handleInput(keyCode){
+		//moves player and keep player within playing feild
 		switch (keyCode) {
 			case 'left':
 					if (this.x==0) {return;}
