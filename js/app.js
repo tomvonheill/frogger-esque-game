@@ -70,6 +70,10 @@ class Player{
 		// You should multiply any movement by the dt parameter
     	// which will ensure the game runs at the same speed for
     	// all computers.
+    	if(this.y ==0){
+    		window.alert("You Won!");
+			this.reset();
+    	}
 
 
 	}
@@ -92,7 +96,7 @@ class Player{
 				break;
 
 			case 'up':
-					if(this.y==50){this.reset()}
+					if(this.y==50){this.y=0;}
 					else{this.y-=83;}
 				//console.log(this.y);
 
