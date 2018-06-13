@@ -16,7 +16,7 @@ class Enemy{
 
 		//Randomly assign starting y position evenly spaced
 		this.y = 55+Math.floor(Math.random()*3)*boxSideLength;
-		this.x = 0;
+		this.x = -101;
 		this.speed = Math.floor(Math.random()*300)+100
 	}
 
@@ -29,7 +29,7 @@ class Enemy{
     	// all computers.
     	this.x = this.x + dt*this.speed;
     	if(this.x>=sceneWidth){
-    		this.x =0;
+    		this.x =-101;
     	}
 	}
 
