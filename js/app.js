@@ -66,10 +66,11 @@ class Player{
 
 	// Update the enemy's position, required method for game
 	// Parameter: dt, a time delta between tickt
-	update(dt){
+	update(){
 		// You should multiply any movement by the dt parameter
     	// which will ensure the game runs at the same speed for
     	// all computers.
+
 
 	}
 
@@ -93,7 +94,7 @@ class Player{
 			case 'up':
 					if(this.y==50){this.reset()}
 					else{this.y-=83;}
-				console.log(this.y);
+				//console.log(this.y);
 
 				break;	
 			case 'down':
@@ -110,6 +111,23 @@ class Player{
 	}
 }
 
+class ColisionHandler{
+	constructor(player, enemies){
+		self.player =player;
+		self.enemies = enemies;
+	}
+
+	detectColision(){
+		for(let enemy of self.enemies){
+			var xdiff = Math.abs(self.player.x-enemy.x);
+			var ydiff = Math.abs(self.player.y-enemy.y);
+			if(xdiff+ydiff<40){
+				self.player.reset();							
+			}
+		}
+	}
+
+}
 
 
 // Now instantiate your objects.
@@ -118,6 +136,7 @@ class Player{
 
 const allEnemies = [new Enemy(), new Enemy(), new Enemy(), new Enemy()];
 const player = new Player();
+const myColisionHandler = new ColisionHandler(player,allEnemies);
 
 
 
